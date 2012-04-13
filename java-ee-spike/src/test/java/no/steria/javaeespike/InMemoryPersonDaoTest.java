@@ -3,7 +3,7 @@ package no.steria.javaeespike;
 import static org.fest.assertions.Assertions.assertThat;
 
 import org.joda.time.LocalDate;
-import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class InMemoryPersonDaoTest {
@@ -57,7 +57,7 @@ public class InMemoryPersonDaoTest {
 	}
 
 	
-	@After
+	@Before
 	public void deleteAll() {
 		InMemoryPersonDao.deleteAll();
 	}

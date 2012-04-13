@@ -2,6 +2,8 @@ package no.steria.javaeespike;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class PersonViewTest {
@@ -15,6 +17,11 @@ public class PersonViewTest {
 		assertThat(new clojure_person_view.core().generateCreatePage("", "", "", null))
 			.contains("<form")
 			.doesNotContain("<div");
+	}
+	
+	@Test
+	public void shoulDisplaySearchForm() throws Exception {
+		assertThat(new clojure_person_view.core().generateSearchPage(Arrays.asList("Luke","Anakin"))).contains("<li>Luke");
 	}
 	
 }

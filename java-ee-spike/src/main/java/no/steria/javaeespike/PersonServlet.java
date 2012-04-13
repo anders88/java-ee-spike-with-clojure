@@ -102,6 +102,13 @@ public class PersonServlet extends HttpServlet {
 		this.personDao = personDao;
 	}
 	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		personDao = new InMemoryPersonDao();
+		personView = new PersonViewClojureAdapter();
+	}
+	
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -18,6 +18,7 @@
   (is (.contains actual "value=\"Luke\"") actual)
   (is (.contains actual "value=\"Skywalker\"") actual)
   (is (.contains actual "value=\"25.05.1977\"") actual)
+  (is (.contains actual "name=\"createPerson\"") actual)
   )
   )
 
@@ -33,9 +34,15 @@
   )
   )
 
-
 (deftest should-contain-errormessage
   (let [actual (-generateCreatePage nil "L<&>uke" "Skywalker" "25.05.1977" "Error something")]
   (is (.contains actual "Error something") actual)
+  )
+  )
+
+(deftest searchpage-contain-search-and-result
+  (let [actual (-generateSearchPage nil ["Anakin" "Luke"])]
+  (is (.contains actual "<li>Anakin</li>") actual)
+  (is (.contains actual "<form action=\"findPeople.html") actual)
   )
   )

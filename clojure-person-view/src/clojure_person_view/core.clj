@@ -4,7 +4,6 @@
 (:use [hiccup.form])  
 (:gen-class
    :methods [
-             [hello [String] String]
              [generateCreatePage [String String String String] String]
              [generateSearchPage [java.util.List] String]
              [personViewClojure [] no.steria.javaeespike.common.PersonView]
@@ -13,10 +12,6 @@
 )
    
 
- 
-(defn -hello
-  [this s]
-  (str "Hello, " s))
 
 (defn -generateCreatePage [this first-name last-name birth-date errormessage]
   (html5 [:body 
@@ -45,15 +40,22 @@
           [:ul (for [result searchResults] [:li result])]])
   )
 
-(defn personDisplayString [person]
-  (str (.getFirstName person) " " (.getLastName person)) 
+(def date-format (org.joda.time.format.DateTimeFormat/forPattern "dd.MM.yyyy"))
+
+(defn format-birth-date [birth-date]
+  (if (nil? birth-date) ""
+    (str " (" (.print date-format birth-date) ")"))
+  )
+
+(defn person-display-string [person]
+  (str (.getFirstName person) " " (.getLastName person) (format-birth-date (.getBirthDate person))) 
   )
 
 (defn -personViewClojure [this]
   (proxy [no.steria.javaeespike.common.PersonView] []
     (displayCreatePage [print-writer first-name last-name birth-date errormessage] 
                        (.append print-writer (-generateCreatePage this first-name last-name birth-date errormessage)))
-    (displaySearchPage [print-writer search-results] (.append print-writer (-generateSearchPage this (map personDisplayString search-results))))
+    (displaySearchPage [print-writer search-results] (.append print-writer (-generateSearchPage this (map person-display-string search-results))))
   )
   )
 

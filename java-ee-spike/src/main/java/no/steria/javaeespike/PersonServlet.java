@@ -91,7 +91,7 @@ public class PersonServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		personDao = new InMemoryPersonDao();
-		personView = new PersonViewClojureAdapter();
+		personView = new clojure_person_view.core().personViewClojure();
 	}
 	
 	

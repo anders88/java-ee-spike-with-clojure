@@ -48,5 +48,6 @@
   )
 
 (deftest should-generate-display-string-from-person  
-  (is (= "Luke Skywalker" (personDisplayString (no.steria.javaeespike.common.Person/create "Luke" "Skywalker" nil))))
+  (is (= "Luke Skywalker" (person-display-string (no.steria.javaeespike.common.Person/create "Luke" "Skywalker" nil))))
+  (is (= "Luke Skywalker (25.05.1977)" (person-display-string (no.steria.javaeespike.common.Person/create "Luke" "Skywalker" (org.joda.time.LocalDate. 1977 5 25)))))
  )

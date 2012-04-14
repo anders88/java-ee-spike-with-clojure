@@ -1,7 +1,6 @@
 package no.steria.javaeespike;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,27 +32,10 @@ public class PersonServlet extends HttpServlet {
 			personView.displayCreatePage(resp.getWriter(),"","","",null);
 		} else {
 			List<Person> people = personDao.findPeople(req.getParameter("name_query"));
-			personView.displaySearchPage(resp.getWriter(),generateResponse(people));
+			personView.displaySearchPage(resp.getWriter(), people);
 		}
 	}
 	
-	private List<String> generateResponse(List<Person> people) {
-		List<String> result = new ArrayList<>();
-		for (Person person : people) {
-			result.add(prettyPrint(person));
-		}
-		return result;
-	}
-	
-	private String prettyPrint(Person person) {
-		return person.getFirstName() + " " + person.getLastName() + formatDate(person.getBirthDate());
-	}
-
-	private String formatDate(LocalDate date) {
-		if (date == null) return "";
-		return " (" + dateFormat.print(date) + ")";
-	}
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String firstName = req.getParameter("first_name");

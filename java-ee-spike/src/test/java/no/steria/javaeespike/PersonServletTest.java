@@ -183,7 +183,7 @@ public class PersonServletTest {
 		servlet.service(req, resp);
 		
 		verify(resp).setContentType("text/html");
-		verify(personView).displaySearchPage(writer,new ArrayList<String>());		
+		verify(personView).displaySearchPage(writer,new ArrayList<Person>());		
 	}
 	
 	@Test
@@ -201,14 +201,16 @@ public class PersonServletTest {
 	public void shouldDisplaySearchResult() throws Exception {
 		createGetRequest("/findPeople.html");
 		when(req.getParameter("name_query")).thenReturn("Darth");
+		Person vader = Person.create("Darth", "Vader", new LocalDate(1977,5,25));
+		Person maul = Person.create("Darth", "Maul", new LocalDate(1999,5,19));
 		when(personDao.findPeople(anyString())).thenReturn(Arrays.asList( //
-				Person.create("Darth", "Vader", new LocalDate(1977,5,25)) ,
-				Person.create("Darth", "Maul", new LocalDate(1999,5,19)) //
+				vader ,
+				maul //
 				));
 		
 		servlet.service(req, resp);
 		
-		verify(personView).displaySearchPage(writer, Arrays.asList("Darth Vader (25.05.1977)","Darth Maul (19.05.1999)"));
+		verify(personView).displaySearchPage(writer, Arrays.asList(vader,maul));
 		
 	}
 	

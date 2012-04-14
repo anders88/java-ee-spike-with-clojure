@@ -1,7 +1,9 @@
-package no.steria.javaeespike;
+package no.steria.javaeespike.common;
 
 import java.io.PrintWriter;
 import java.util.List;
+
+import no.steria.javaeespike.common.Person;
 
 public interface PersonView {
 

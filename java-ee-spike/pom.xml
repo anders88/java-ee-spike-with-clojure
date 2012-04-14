@@ -13,8 +13,14 @@
 		<dependency>
 			<groupId>clojure-person-view</groupId>
 			<artifactId>clojure-person-view</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>no.steria</groupId>
+			<artifactId>spike-common</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -113,6 +119,7 @@
 		</plugins>
 	</build>
 
+	<!--
 	<repositories>
 		<repository>
 			<id>repository.jboss.org-public</id>
@@ -120,4 +127,5 @@
 			<url>https://repository.jboss.org/nexus/content/repositories/public-jboss/</url>
 		</repository>
 	</repositories>
+	-->
 </project>

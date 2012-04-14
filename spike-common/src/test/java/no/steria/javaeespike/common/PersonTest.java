@@ -1,6 +1,8 @@
-package no.steria.javaeespike;
+package no.steria.javaeespike.common;
 
 import static org.fest.assertions.Assertions.assertThat;
+
+import no.steria.javaeespike.common.Person;
 
 import org.joda.time.LocalDate;
 import org.junit.Test;

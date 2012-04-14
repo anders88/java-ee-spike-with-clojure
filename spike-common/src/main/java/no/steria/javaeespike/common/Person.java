@@ -1,4 +1,4 @@
-package no.steria.javaeespike;
+package no.steria.javaeespike.common;
 
 import org.joda.time.LocalDate;
 

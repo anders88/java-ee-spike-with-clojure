@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import no.steria.javaeespike.common.Person;
+
 public class InMemoryPersonDao implements PersonDao {
 	
 	private static Set<Person> people = new HashSet<>();

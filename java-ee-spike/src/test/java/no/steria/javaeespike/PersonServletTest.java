@@ -19,6 +19,9 @@ import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import no.steria.javaeespike.common.Person;
+import no.steria.javaeespike.common.PersonView;
+
 import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;

@@ -2,6 +2,8 @@ package no.steria.javaeespike;
 
 import java.util.List;
 
+import no.steria.javaeespike.common.Person;
+
 
 public interface PersonDao {
 

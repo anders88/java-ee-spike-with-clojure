@@ -7,10 +7,12 @@
              [hello [String] String]
              [generateCreatePage [String String String String] String]
              [generateSearchPage [java.util.List] String]
+             [personViewClojure [] no.steria.javaeespike.common.PersonView]
              ])
              
 )
    
+
  
 (defn -hello
   [this s]
@@ -43,5 +45,16 @@
           [:ul (for [result searchResults] [:li result])]])
   )
 
+(defn personDisplayString [person]
+  (str (.getFirstName person) " " (.getLastName person)) 
+  )
+
+(defn -personViewClojure [this]
+  (proxy [no.steria.javaeespike.common.PersonView] []
+    (displayCreatePage [print-writer first-name last-name birth-date errormessage] 
+                       (.append print-writer (-generateCreatePage this first-name last-name birth-date errormessage)))
+    (displaySearchPage [print-writer search-results] (.append print-writer (-generateSearchPage this (map personDisplayString search-results))))
+  )
+  )
 
 

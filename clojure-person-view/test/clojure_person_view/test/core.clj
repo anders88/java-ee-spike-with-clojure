@@ -46,3 +46,7 @@
   (is (.contains actual "<form action=\"findPeople.html") actual)
   )
   )
+
+(deftest should-generate-display-string-from-person  
+  (is (= "Luke Skywalker" (personDisplayString (no.steria.javaeespike.common.Person/create "Luke" "Skywalker" nil))))
+ )

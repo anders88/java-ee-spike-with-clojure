@@ -28,7 +28,7 @@ public class PersonViewClojureAdapter implements PersonView {
 	}
 	
 	private List<String> generateResponse(List<Person> people) {
-		List<String> result = new ArrayList<>();
+		List<String> result = new ArrayList<String>();
 		for (Person person : people) {
 			result.add(prettyPrint(person));
 		}

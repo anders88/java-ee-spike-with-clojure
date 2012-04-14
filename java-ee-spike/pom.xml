@@ -22,6 +22,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.0</version>
@@ -104,6 +110,7 @@
 			<version>1.8.5</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -112,14 +119,13 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<target>1.7</target>
-					<source>1.7</source>
+					<target>1.6</target>
+					<source>1.6</source>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
-	<!--
 	<repositories>
 		<repository>
 			<id>repository.jboss.org-public</id>
@@ -127,5 +133,4 @@
 			<url>https://repository.jboss.org/nexus/content/repositories/public-jboss/</url>
 		</repository>
 	</repositories>
-	-->
 </project>

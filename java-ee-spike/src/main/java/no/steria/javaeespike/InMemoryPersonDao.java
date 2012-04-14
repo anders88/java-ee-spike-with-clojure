@@ -9,7 +9,7 @@ import no.steria.javaeespike.common.Person;
 
 public class InMemoryPersonDao implements PersonDao {
 	
-	private static Set<Person> people = new HashSet<>();
+	private static Set<Person> people = new HashSet<Person>();
 	
 	private Set<Person> transaction = null;
 	
@@ -21,7 +21,7 @@ public class InMemoryPersonDao implements PersonDao {
 	
 	private static List<Person> all() {
 		synchronized (people) {
-			List<Person> result = new ArrayList<>();
+			List<Person> result = new ArrayList<Person>();
 			for (Person person : people) {
 				result.add(Person.create(person.getFirstName(), person.getLastName(), person.getBirthDate()));
 			}
@@ -43,7 +43,7 @@ public class InMemoryPersonDao implements PersonDao {
 
 	@Override
 	public void beginTransaction() {
-		transaction = new HashSet<>();
+		transaction = new HashSet<Person>();
 	}
 
 	@Override
@@ -59,16 +59,16 @@ public class InMemoryPersonDao implements PersonDao {
 	@Override
 	public List<Person> findPeople(String query) {
 		validateTransaction();
-		Set<Person> allPersons = new HashSet<>(all());
+		Set<Person> allPersons = new HashSet<Person>(all());
 		allPersons.addAll(transaction);
 		return search(allPersons,query);
 	}
 
 	private List<Person> search(Set<Person> allPersons, String queryMixedCase) {
 		if (queryMixedCase == null) {
-			return new ArrayList<>(allPersons);
+			return new ArrayList<Person>(allPersons);
 		}
-		List<Person> result = new ArrayList<>();
+		List<Person> result = new ArrayList<Person>();
 		String query = queryMixedCase.toLowerCase();
 		for (Person person : allPersons) {
 			String fullName = new String(person.getFirstName() + " " + person.getLastName()).toLowerCase();
